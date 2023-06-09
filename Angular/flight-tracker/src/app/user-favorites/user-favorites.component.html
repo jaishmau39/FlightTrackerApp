@@ -1,0 +1,32 @@
+
+<div *ngIf="isLoggedIn">
+
+<div *ngIf="flights.length > 0" class="card mt-4">
+    <div class="card-body">
+      <h5 class="card-title">Favorite Flights</h5>
+      <table class="table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Flight Number</th>
+            <th>Departure</th>
+            <th>Departure Time</th>
+            <th>Arrival</th>
+            <th>Arrival Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let flight of flights">
+            <td><img src="../../assets/AirlineLogos/{{flight.airline.airlineCode}}.png" ></td>
+            <td>{{ flight.flight.flightNumber }}</td>
+            <td>{{ flight.departure.city }}</td>
+            <td>{{ flight.flight.departureTime}} {{flight.departure.timezone}}</td>
+            <td>{{ flight.arrival.city }}</td>
+            <td>{{ flight.flight.arrivalTime}} {{flight.arrival.timezone}}</td>
+            <td><button type="button" class="btn btn-danger" (click)="removeFlight(flight.flight.flightId)">Remove</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,96 @@
+<div class="container">
+  <div *ngIf="successMessage" class="alert alert-success">
+    {{ successMessage }}
+  </div>
+  <div class="card p-4 mt-5">
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="row g-3">
+
+        <!-- Display success message in alert -->
+
+
+        <div class="col-12 mb-4">
+          <h4>Flight Booking</h4>
+          <span class="text-muted">Please enter the departure and arrival below.</span>
+        </div>
+
+        <div class="col-lg-6 col-md-12">
+          <div class="form-floating">
+            <input type="text" placeholder="FLYING FROM" formControlName="ffrom" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.ffrom.errors }" (keyup)="onFFromInput($event)">
+            <div *ngIf="submitted && f.ffrom.errors" class="invalid-feedback">
+              <div *ngIf="f.ffrom.errors.required">DEPARTURE is required.</div>
+            </div>
+
+            <!-- suggestions -->
+            <ul *ngIf="ffromSuggestions.length > 0" class="suggestion-list">
+              <li *ngFor="let suggestion of ffromSuggestions" (click)="selectFFromSuggestion(suggestion)">{{ suggestion }}</li>
+            </ul>
+
+
+
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-12">
+          <div class="form-floating">
+            <input type="text" placeholder="FLYING TO" formControlName="fto" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.fto.errors }" (keyup)="onFToInput($event)">
+            <div *ngIf="submitted && f.fto.errors" class="invalid-feedback">
+              <div *ngIf="f.fto.errors.required">ARRIVAL is required.</div>
+            </div>
+
+            <!-- suggestions -->
+            <ul *ngIf="ftoSuggestions.length > 0" class="suggestion-list">
+              <li *ngFor="let suggestion of ftoSuggestions" (click)="selectFToSuggestion(suggestion)">{{ suggestion }}</li>
+            </ul>
+
+          </div>
+        </div>
+
+        <div class="col-12 mt-4">
+          <button class="btn btn-primary text-uppercase" type="submit">SHOW FLIGHTS<i
+              class="fa fa-plane ms-3"></i></button>
+        </div>
+
+      </div>
+    </form>
+  </div>
+
+
+
+
+
+  <!-- Display the table of flights -->
+  <div *ngIf="flights.length > 0" class="card mt-4">
+    <div class="card-body">
+      <h5 class="card-title">Flights from {{ flights[0].departure.city }} to {{ flights[0].arrival.city }}</h5>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Flight Number</th>
+            <th>Departure</th>
+            <th>Departure Time</th>
+            <th>Arrival</th>
+            <th>Arrival Time</th>
+            <th>Flight Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let flight of flights">
+            <td> <img  style="height: 30px; width: 30px;" src="../../assets/AirlineLogos/{{flight.airline.airlineCode}}.png"> </td>
+            <td>{{ flight.flight.flightNumber }}</td>
+            <td>{{ flight.departure.city }}</td>
+            <td>{{ flight.flight.departureTime}} {{flight.departure.timezone}}</td>
+            <td>{{ flight.arrival.city }}</td>
+            <td>{{ flight.flight.arrivalTime}} {{flight.arrival.timezone}}</td>
+            <td class="align-self-center">{{ flight.flight.flightStatus}} <span *ngIf="flight.flight.flightStatus === 'active'">🟢</span> </td>
+            <td><button type="button" class="btn btn-info" (click)="addToFavorites(flight)">Favourite</button></td>
+            <td *ngIf="flight.flight.flightStatus === 'active'">
+              <button  type="button" class="btn btn-outline-primary" (click)="showFlightDetail(flight)">Track Flight Live</button> </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

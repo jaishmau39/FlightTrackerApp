@@ -1,0 +1,88 @@
+<div *ngIf="flight != null" class="container border">
+
+     <div class="row border-bottom">
+          <div class="col-1 align-self-center" >    
+               <img src="../../assets/AirlineLogos/{{flight.airline.airlineCode}}.png" >
+          </div>
+
+          <div class="col-2">
+               <div class="h1">{{flight.flight.flightNumber}}</div>
+               <div>{{flight.airline.airlineName}}</div>
+          </div>
+
+          <div class="col-2 ">
+               <div>Departure</div>
+               <div class="h2">{{flight.departure.airportCode}}</div>
+               <div>{{flight.departure.city}}, {{flight.departure.country}}</div>
+          </div>
+
+          <div class="col-1 text-center align-self-center">
+               <h1>►</h1>
+          </div>
+
+          <div class="col-2 ">
+               <div>Arrival</div>
+               <div class="h2">{{flight.arrival.airportCode}}</div>
+               <div>{{flight.arrival.city}}, {{flight.arrival.country}}</div>
+          </div>
+     </div>
+     <div class="row border-bottom">
+          <div class="col">
+               <div>
+                    Departure Time:
+               </div>
+               <div>
+                    {{flight.flight.departureTime}} {{flight.departure.timezone}}
+               </div>
+
+          </div>
+          <div class="col">
+               <div>
+                    Arrival Time:
+               </div>
+               <div>
+                    {{flight.flight.arrivalTime}} {{flight.arrival.timezone}}
+               </div>
+
+          </div>
+
+          <div class="col">
+               <div>
+                    Estimated Arrival Time:
+               </div>
+               <div>
+                    {{flight.flight.arrivalTimeEst}} {{flight.arrival.timezone}}
+               </div>
+
+          </div>
+
+          <div class="col align-self-center">
+               {{delay}}
+          </div>
+
+     </div>
+
+     <div class="row border-bottom">
+          <div class="col-4">
+             Speed:  <span class="h2">{{geography.speed}} </span> <span class="h4">km/hr {{direction}}</span>
+          </div>
+          <div class="col-4">
+             Altitude: <span class="h2">{{geography.alt}}</span><span class="h4"> meters</span>
+          </div>
+
+     </div>
+
+
+     <div *ngIf="geography != null" class="map m-3" leaflet [leafletOptions]="options">
+          [leafletLayersControl]="layersControl">
+
+     </div>
+
+
+</div>
+
+<div *ngIf="flight == null" class="container">
+
+     Loading flight...
+
+</div>

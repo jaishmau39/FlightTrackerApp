@@ -1,0 +1,30 @@
+.container{
+    margin-top:200px;
+}
+
+.btn:hover{
+    color:#fff;
+}
+
+.input-text:focus{
+       
+  
+    box-shadow: 0px 0px 0px;
+    border-color:#f8c146;
+    outline: 0px;
+}
+
+.form-control {
+    border: 1px solid #f8c146;
+}
+
+.suggestion-list {
+    position: absolute;
+    z-index: 100;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    list-style-type: none;
+    margin: 0;
+    width: 100%;
+  }

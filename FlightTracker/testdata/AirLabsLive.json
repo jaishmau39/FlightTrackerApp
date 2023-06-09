@@ -1,0 +1,80 @@
+{
+  "request": {
+    "lang": "en",
+    "currency": "USD",
+    "time": 0,
+    "id": "fp776j5ba1k",
+    "server": "l",
+    "host": "airlabs.co",
+    "pid": 1890672,
+    "key": {
+      "id": 24836,
+      "api_key": "1ad8cb34-7d23-46d1-b136-de1c1e0e03ce",
+      "type": "free",
+      "expired": null,
+      "registered": "2023-06-06T12:20:14.000Z",
+      "limits_by_hour": 2500,
+      "limits_by_minute": 250,
+      "limits_by_month": 1000,
+      "limits_total": 997
+    },
+    "params": {
+      "flight_iata": "F8601",
+      "lang": "en"
+    },
+    "version": 9,
+    "method": "flights",
+    "client": {
+      "ip": "23.233.239.248",
+      "geo": {
+        "country_code": "CA",
+        "country": "Canada",
+        "continent": "North America",
+        "city": "Dolbeau-Mistassini",
+        "lat": 48.8707,
+        "lng": -72.2141,
+        "timezone": "America/Toronto"
+      },
+      "connection": {
+        "type": "cable/dsl",
+        "isp_code": 5769,
+        "isp_name": "Videotron Telecom Ltee"
+      },
+      "device": {},
+      "agent": {},
+      "karma": {
+        "is_blocked": false,
+        "is_crawler": false,
+        "is_bot": false,
+        "is_friend": false,
+        "is_regular": true
+      }
+    }
+  },
+  "response": [
+    {
+      "hex": "C01E1F",
+      "reg_number": "C-FLKO",
+      "flag": "CA",
+      "lat": 47.95,
+      "lng": -88.53,
+      "alt": 10972,
+      "dir": 296,
+      "speed": 787,
+      "v_speed": 0,
+      "flight_number": "601",
+      "flight_icao": "FLE601",
+      "flight_iata": "F8601",
+      "dep_icao": "CYYZ",
+      "dep_iata": "YYZ",
+      "arr_icao": "CYVR",
+      "arr_iata": "YVR",
+      "airline_icao": "FLE",
+      "airline_iata": "F8",
+      "aircraft_icao": "B38M",
+      "updated": 1686054625,
+      "status": "en-route"
+    }
+  ],
+  "terms": "Unauthorized access is prohibited and punishable by law. \nReselling data 'As Is' without AirLabs.Co permission is strictly prohibited. \nFull terms on https://airlabs.co/. \nContact us info@airlabs.co"
+}
